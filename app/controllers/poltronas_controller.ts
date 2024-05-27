@@ -1,4 +1,5 @@
 import type { HttpContext } from '@adonisjs/core/http'
+import Poltrona from '#models/poltrona'
 
 export default class PoltronasController {
   /**
@@ -7,14 +8,15 @@ export default class PoltronasController {
   async index({}: HttpContext) {}
 
   /**
-   * Display form to create a new record
-   */
-  async create({}: HttpContext) {}
-
-  /**
    * Handle form submission for the create action
    */
-  async store({ request }: HttpContext) {}
+  async store({ request }: HttpContext) {
+    const poltrona = await Poltrona.create({
+      fileira: 1,
+      coluna: 1,
+      posicao: String.fromCharCode(65) + 1,
+    })
+  }
 
   /**
    * Show individual record

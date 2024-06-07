@@ -10,7 +10,7 @@ export default class PoltronasController {
   /**
    * Handle form submission for the create action
    */
-  async store({ request }: HttpContext) {
+  async store({}: HttpContext) {
     const poltrona = await Poltrona.create({
       fileira: 1,
       coluna: 1,

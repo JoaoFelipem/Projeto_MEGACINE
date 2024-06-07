@@ -2,6 +2,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 import Sala from '#models/sala'
 import Poltrona from '#models/poltrona'
 import PoltronasController from './poltronas_controller.js'
+import router from '@adonisjs/core/services/router'
 
 export default class SalasController {
   /**
@@ -29,6 +30,11 @@ export default class SalasController {
       quantidadeFileiras: request.input('quantidadeFileiras'),
       quantidadeColunas: request.input('quantidadeColunas'),
       capacidade: request.input('capacidade'),
+    })
+    const poltrona = await Poltrona.create({
+      fileira: 1,
+      coluna: 1,
+      posicao: String.fromCharCode(65) + 1,
     })
     /*for (let f = 0; f < request.input('quantidadeFileiras'); f++) {
       for (let c = 0; c < request.input('quantidadeColunas'); c++) {

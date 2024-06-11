@@ -9,7 +9,9 @@ export default class FilmesController {
   /**
    * Display form to create a new record
    */
-  async create({}: HttpContext) {}
+  async create({ view }: HttpContext) {
+    return view.render('pages/filmes/create')
+  }
 
   /**
    * Handle form submission for the create action

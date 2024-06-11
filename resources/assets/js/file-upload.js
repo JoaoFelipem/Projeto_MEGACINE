@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
   'use strict';
   $(function() {
     $('.file-upload-browse').on('click', function() {

@@ -8,7 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('titulo')
       table.text('sinopse', 'mediumtext')
-      table.time('duracao')
+      table.integer('duracao')
       table.string('classificao_indicativa')
       table.string('direcao')
       table.string('roteiro')

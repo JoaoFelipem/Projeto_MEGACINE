@@ -62,5 +62,23 @@
     </div>
   </div>
 </div>
-{{--<script src="/resources/assets/js/file-upload.js"></script> --}}
+
+@vite([
+        
+        'resources/assets/vendors/select2/select2.min.js',
+        'resources/assets/vendors/typeahead.js/typeahead.bundle.min.js',
+        // Custom js for this page 
+        'resources/assets/js/file-upload.js',
+        'resources/assets/js/typeahead.js',
+        'resources/assets/js/select2.js',
+    ])
+
+<!--<script src="{{asset('resources/assets/vendors/select2/select2.min.js')}}"></script>
+<script src="{{asset('resources/assets/vendors/typeahead.js/typeahead.bundle.min.js')}}"></script>
+<script src="{{asset('resources/assets/js/file-upload.js')}}"></script>
+<script src="{{asset('resources/assets/js/typeahead.js')}}"></script>
+<script src="{{asset('resources/assets/js/select2.js')}}"></script> -->
+
 @end
+
+

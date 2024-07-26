@@ -22,10 +22,10 @@ export default class Filme extends BaseModel {
   
   @column()
   declare roteiro: string
-  
+
   @column()
   declare elenco: string
-  
+
   @column()
   declare data_estreia: Date
   

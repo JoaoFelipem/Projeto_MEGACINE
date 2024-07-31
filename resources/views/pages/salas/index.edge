@@ -1,0 +1,48 @@
+@layout()
+{{-- Página com a Tabela que lista as salas --}}
+<div class="page-header">
+  <h3 class="page-title"> Salas </h3>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Forms</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+    </ol>
+  </nav>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Basic Table</h4>
+        <p class="card-description"> Add class <code>.table</code>
+        </p>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Sala</th>
+                <th>Quantidade de fileiras</th>
+                <th>Quantidade de colunas</th>
+                <th>Capacidade máxima</th>
+              </tr>
+            </thead>
+            <tbody>
+              @each(item in salas)
+              <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.nome }}</td>
+                <td>{{ item.quantidadeFileiras }}</td>
+                <td>{{ item.quantidadeColunas }}</td>
+                <td>{{ item.capacidade }}</td>
+              @end
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@end

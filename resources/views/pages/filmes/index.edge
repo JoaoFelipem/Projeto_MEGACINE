@@ -1,0 +1,38 @@
+@layout()
+{{-- Página com a Tabela que lista as salas --}}
+<div class="page-header">
+  <h3 class="page-title"> Filmes </h3>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Filmes</li>
+      <li class="breadcrumb-item active" aria-current="page"><a
+          href="/resources/views/pages/filmes/create.edge">Adicionar Novo</a></li>
+    </ol>
+  </nav>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Tabela</h4>
+        <p class="card-description"> Classe <code>.table</code>
+        </p>
+        <div class="table-responsive">
+          <table class="table">
+            @each(item in filmes)
+              <span class="input-group-append">
+                <img alt="Prévia" id="preview" height="300px" width="250px" style="border-radius: 10px; margin: 4px">
+              </span>
+              <label style="text-align: center; padding: 10px 25% 10px 25%; margin: 4px; border-radius: 6px; text-decoration: underline; font-size: small; width: max-content">
+                {{ item.titulo }}
+              </label>
+            @end
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@end

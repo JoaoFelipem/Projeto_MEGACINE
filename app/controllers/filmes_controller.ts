@@ -1,10 +1,15 @@
+import Filme from '#models/filme'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class FilmesController {
   /**
    * Display a list of resource
    */
-  async index({}: HttpContext) {}
+  async index({ view }: HttpContext) {
+    const filmes = await Filme.all()
+
+    return view.render('pages/filmes/index', { filmes })
+  }
 
   /**
    * Display form to create a new record
@@ -16,8 +21,21 @@ export default class FilmesController {
   /**
    * Handle form submission for the create action
    */
-  async store({ request }: HttpContext) {}
+  async store({ request, response, session }: HttpContext) {
+    /*const filme = await Filme.create({
+z      titulo: request.input('titulo'),
+z      sinopse: request.input('sinopse'),
+      duracao: request.input('duracao'),
+      classificao_indicativa: request.input('classificao_indicativa'),
+z      direcao: request.input('direcao'),
+      data_estreia: request.input('data_estreia'),
+      data_termino: request.input('data_termino'),
+z      capa: request.input('capa'),
+      genero: request.input('genero')
+    })*/
 
+    return response.redirect().toRoute('filmes.index')
+  }
   /**
    * Show individual record
    */

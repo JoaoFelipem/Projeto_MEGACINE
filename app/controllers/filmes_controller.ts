@@ -23,16 +23,16 @@ export default class FilmesController {
    */
   async store({ request, response, session }: HttpContext) {
     const filme = await Filme.create({
-z      titulo: request.input('titulo'),
-z      sinopse: request.input('sinopse'),
+      titulo: request.input('titulo'),
+      sinopse: request.input('sinopse'),
       duracao: request.input('duracao'),
       classificao_indicativa: request.input('classificao_indicativa'),
-z      direcao: request.input('direcao'),
-z      roteiro: request.input('roteiro'),
+      direcao: request.input('direcao'),
+      roteiro: request.input('roteiro'),
       elenco: request.input('elenco'),
       data_estreia: request.input('data_estreia'),
       data_termino: request.input('data_termino'),
-z      capa: request.input('capa'),
+      capa: request.input('capa'),
     })
     /*for (let f = 0; f < request.input('quantidadeFileiras'); f++) {
       for (let c = 0; c < request.input('quantidadeColunas'); c++) {

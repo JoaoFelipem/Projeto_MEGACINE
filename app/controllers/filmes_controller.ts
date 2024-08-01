@@ -24,25 +24,14 @@ export default class FilmesController {
   async store({ request, response, session }: HttpContext) {
     const filme = await Filme.create({
       titulo: request.input('titulo'),
+      capa: request.input('capa'),
       sinopse: request.input('sinopse'),
       duracao: request.input('duracao'),
-      classificao_indicativa: request.input('classificao_indicativa'),
+      classificao_indicativa: request.input('classificaoIndicativa'),
       direcao: request.input('direcao'),
-      roteiro: request.input('roteiro'),
-      elenco: request.input('elenco'),
-      data_estreia: request.input('data_estreia'),
-      data_termino: request.input('data_termino'),
-      capa: request.input('capa'),
+      data_estreia: request.input('dataEstreia'),
+      data_termino: request.input('dataTermino'),
     })
-    /*for (let f = 0; f < request.input('quantidadeFileiras'); f++) {
-      for (let c = 0; c < request.input('quantidadeColunas'); c++) {
-        const poltrona = await Poltrona.create({
-          fileira: f + 1,
-          coluna: c + 1,
-          posicao: String.fromCharCode(65 + f) + c + 1,
-        })
-      }
-    }*/
     return response.redirect().toRoute('salas.index')
   }
   /**

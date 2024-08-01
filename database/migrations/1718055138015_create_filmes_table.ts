@@ -11,8 +11,6 @@ export default class extends BaseSchema {
       table.integer('duracao')
       table.string('classificao_indicativa')
       table.string('direcao')
-      table.string('roteiro')
-      table.string('elenco')
       table.date('data_estreia')
       table.date('data_termino')
       table.specificType('capa', 'mediumblob')

@@ -18,14 +18,14 @@
         <form class="forms-sample">
           <div class="form-group">
             <label for="titulo">Título do filme</label>
-            <input type="text" class="form-control" id="titulo" placeholder="Título">
+            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título">
           </div>
           <div class="form-group">
-            <label>File upload</label>
+            <label>Capa do filme</label>
             <input type="file" id="upload" accept="image/png, image/jpeg" name="img[]" class="file-upload-default">
             <div class="input-group col-xs-12">
               <!-- Campo responsável por guardar o Hash da imagem | Referir através do ID "capa" -->
-              <input id="capa" type="textarea" class="form-control file-upload-info" disabled="" hidden >
+              <input id="capa" type="textarea" class="form-control file-upload-info" hidden name="capa" >
 
               <div style="margin: 0px 24px 0px 0px; border: 5px solid #2c2e33; border-radius: 12px;">
 
@@ -39,31 +39,50 @@
               </div>
               <span class="form-group">
                 <label for="sinopse">Sinopse</label>
-                <textarea class="form-control" id="sinopse" cols="105" rows="4"></textarea>
+                <textarea class="form-control" id="sinopse" cols="105" name="sinopse"rows="4"></textarea>
               </span>
             </div>
           </div>
           <div class="form-group">
-            <label for="direcao">Direção</label>
-            <input type="text" class="form-control" id="direcao" placeholder="Diretor">
-          </div>
-          <div class="form-group">
-            <label for="roteiro">Roteiro</label>
-            <input type="text" class="form-control" id="roteiro" placeholder="Password">
-          </div>
-          <div class="form-group">
-            <label for="genero">Gênero</label>
+            <label for="genero">Gêneros</label>
             <select class="form-control" id="genero">
               <option>Ação</option>
               <option>Ficção</option>
             </select>
           </div>
-          
           <div class="form-group">
-            <label for="exampleInputCity1">City</label>
-            <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
+            <label for="duracao">Duração (Em minutos)</label>
+            <input type="number" class="form-control" id="duracao" placeholder="Ex: 110">
+          </div>
+
+          <div class="form-group">
+            <label for="classifica">Classificação indicativa</label>
+            <select class="form-control" id="classifica" name="classificacaoIndicativa">
+              <option selected disabled>Selecione a classificação indicativa</option>
+              <option value="Livre para todos os públicos">Livre para todos os públicos</option>
+              <option value="Não recomendado para menores de 10 anos">Não recomendado para menores de 10 anos</option>
+              <option value="Não recomendado para menores de 12 anos">Não recomendado para menores de 12 anos</option>
+              <option value="Não recomendado para menores de 14 anos">Não recomendado para menores de 14 anos</option>
+              <option value="Não recomendado para menores de 16 anos">Não recomendado para menores de 16 anos</option>
+              <option value="Não recomendado para menores de 18 anos">Não recomendado para menores de 18 anos</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="direcao">Direção</label>
+            <input type="text" class="form-control" id="direcao" name="direcao" placeholder="Ex: Martin Escocês">
           </div>
           
+          <div class="form-group">
+            <label for="dataEst">Data estreia</label>
+            <input type="date" class="form-control" id="dataEst" name="dataEstreia" placeholder="Ex: Martin Escocês">
+          </div>
+
+          <div class="form-group">
+            <label for="dataTer">Data termino</label>
+            <input type="date" class="form-control" id="dataTer" name="dataTermino" placeholder="Ex: Martin Escocês">
+          </div>
+                    
           <button type="submit" class="btn btn-primary mr-2">Submit</button>
           <button class="btn btn-dark">Cancel</button>
         </form>

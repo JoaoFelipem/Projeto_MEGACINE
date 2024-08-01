@@ -31,20 +31,22 @@ export default class SalasController {
       quantidadeColunas: request.input('quantidadeColunas'),
       capacidade: request.input('capacidade'),
     })
-    const poltrona = await Poltrona.create({
+    /*const poltrona = await Poltrona.create({
       fileira: 1,
       coluna: 1,
       posicao: String.fromCharCode(65) + 1,
-    })
-    /*for (let f = 0; f < request.input('quantidadeFileiras'); f++) {
+    })*/
+    for (let f = 0; f < request.input('quantidadeFileiras'); f++) {
       for (let c = 0; c < request.input('quantidadeColunas'); c++) {
-        const poltrona = await Poltrona.create({
-          fileira: f + 1,
-          coluna: c + 1,
-          posicao: String.fromCharCode(65 + f) + c + 1,
-        })
+        const poltrona = await Poltrona.createMany([
+          {
+            fileira: f + 1,
+            coluna: c + 1,
+            posicao: String.fromCharCode(65 + f) + c + 1,
+          },
+        ])
       }
-    }*/
+    }
     return response.redirect().toRoute('salas.index')
   }
 

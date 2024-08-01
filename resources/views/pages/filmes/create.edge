@@ -13,26 +13,33 @@
   <div class="col-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Basic form elements</h4>
-        <p class="card-description"> Basic form elements </p>
+        <h4 class="card-title">Cadastrar novo filme</h4>
         <form class="forms-sample">
           <div class="form-group">
             <label for="inputFilme">Nome do filme</label>
             <input type="text" class="form-control" id="inputFilme" placeholder="Name">
           </div>
           <div class="form-group">
-            <label>File upload</label>
-            <input type="file" id="upload" accept="image/png, image/jpeg" name="img[]" class="file-upload-default">
+            <label>Capa</label>
             <div class="input-group col-xs-12">
-              <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
-              <span class="input-group-append">
-                <button class="file-upload-browse btn btn-primary" for="upload" type="button">Upload</button>
+              <!-- Campo responsável por guardar o Hash da imagem | Referir através do ID "imagem" -->
+              <input id="imagem" type="textarea" class="form-control file-upload-info" disabled="" hidden>
+
+              <div style="margin: 0px 24px 0px 0px; border: 5px solid #2c2e33; border-radius: 12px;">
+
+                <span class="input-group-append">
+                  <input class="file-upload-browse btn" for="upload" type="file" id="file" hidden />
+                  <img alt="Prévia" id="preview" height="300px" width="250px" style="border-radius: 10px; margin: 4px">
+                </span>
+                <label for="file" accept="image/png, image/jpeg" class="btn btn-primary"
+                  style="text-align: center; padding: 10px 25% 10px 25%; margin: 4px; border-radius: 6px; text-decoration: underline; font-size: small; width: max-content">
+                  Selecionar Imagem </label>
+              </div>
+              <span class="form-group">
+                <label for="exampleTextarea1">Sinopse</label>
+                <textarea class="form-control" id="exampleTextarea1" cols="105" rows="4"></textarea>
               </span>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="exampleTextarea1">Sinopse</label>
-            <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail3">Direção</label>
@@ -43,20 +50,15 @@
             <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Password">
           </div>
           <div class="form-group">
-            <label for="exampleSelectGender">Gender</label>
+            <label for="exampleSelectGender">Gênero</label>
             <select class="form-control" id="exampleSelectGender">
-              <option>Male</option>
-              <option>Female</option>
+              <option>Ação</option>
+              <option>Ficção</option>
             </select>
           </div>
-          
-          <div class="form-group">
-            <label for="exampleInputCity1">City</label>
-            <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
-          </div>
-          
-          <button type="submit" class="btn btn-primary mr-2">Submit</button>
-          <button class="btn btn-dark">Cancel</button>
+
+          <button type="submit" class="btn btn-primary mr-2">Enviar</button>
+          <button type="reset" class="btn btn-dark">Cancelar</button>
         </form>
       </div>
     </div>
@@ -64,21 +66,19 @@
 </div>
 
 @vite([
-        
-        'resources/assets/vendors/select2/select2.min.js',
-        'resources/assets/vendors/typeahead.js/typeahead.bundle.min.js',
-        // Custom js for this page 
-        'resources/assets/js/file-upload.js',
-        'resources/assets/js/typeahead.js',
-        'resources/assets/js/select2.js',
-    ])
+
+'resources/assets/vendors/select2/select2.min.js',
+'resources/assets/vendors/typeahead.js/typeahead.bundle.min.js',
+// Custom js for this page
+'resources/assets/js/image-upload.js',
+'resources/assets/js/typeahead.js',
+'resources/assets/js/select2.js',
+])
 
 <!--<script src="{{asset('resources/assets/vendors/select2/select2.min.js')}}"></script>
 <script src="{{asset('resources/assets/vendors/typeahead.js/typeahead.bundle.min.js')}}"></script>
-<script src="{{asset('resources/assets/js/file-upload.js')}}"></script>
+<script src="{{asset('resources/assets/js/image-upload.js')}}"></script>
 <script src="{{asset('resources/assets/js/typeahead.js')}}"></script>
 <script src="{{asset('resources/assets/js/select2.js')}}"></script> -->
 
 @end
-
-

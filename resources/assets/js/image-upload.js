@@ -19,3 +19,4 @@ function previewText({ target }) {
   let base64 = target.value.replace(/^data:image\/[a-z]+;base64,/, "");
   preview.src = `data:image/png;base64,${base64}`;
 }
+

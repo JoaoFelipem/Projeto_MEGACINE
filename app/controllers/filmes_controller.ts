@@ -27,7 +27,7 @@ export default class FilmesController {
       capa: request.input('capa'),
       sinopse: request.input('sinopse'),
       duracao: request.input('duracao'),
-      classificao_indicativa: request.input('classificaoIndicativa'),
+      classificacao_indicativa: request.input('classificacaoIndicativa'),
       direcao: request.input('direcao'),
       data_estreia: request.input('dataEstreia'),
       data_termino: request.input('dataTermino'),

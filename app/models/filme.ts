@@ -15,7 +15,7 @@ export default class Filme extends BaseModel {
   declare duracao: number
   
   @column()
-  declare classificao_indicativa: string
+  declare classificacao_indicativa: string
   
   @column()
   declare direcao: string
@@ -27,7 +27,7 @@ export default class Filme extends BaseModel {
   declare data_termino: Date
   
   @column()
-  declare capa: Blob
+  declare capa: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

@@ -15,7 +15,9 @@
       <div class="card-body">
         <h4 class="card-title">Basic form elements</h4>
         <p class="card-description"> Basic form elements </p>
-        <form class="forms-sample">
+        <form class="forms-sample" method="POST" action="{{ route('filmes.store') }}">
+
+          {{ csrfField() }}
           <div class="form-group">
             <label for="titulo">Título do filme</label>
             <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título">
@@ -52,19 +54,19 @@
           </div>
           <div class="form-group">
             <label for="duracao">Duração (Em minutos)</label>
-            <input type="number" class="form-control" id="duracao" placeholder="Ex: 110">
+            <input type="number" class="form-control" id="duracao" name="duracao" placeholder="Ex: 110">
           </div>
 
           <div class="form-group">
             <label for="classifica">Classificação indicativa</label>
             <select class="form-control" id="classifica" name="classificacaoIndicativa">
               <option selected disabled>Selecione a classificação indicativa</option>
-              <option value="Livre para todos os públicos">Livre para todos os públicos</option>
-              <option value="Não recomendado para menores de 10 anos">Não recomendado para menores de 10 anos</option>
-              <option value="Não recomendado para menores de 12 anos">Não recomendado para menores de 12 anos</option>
-              <option value="Não recomendado para menores de 14 anos">Não recomendado para menores de 14 anos</option>
-              <option value="Não recomendado para menores de 16 anos">Não recomendado para menores de 16 anos</option>
-              <option value="Não recomendado para menores de 18 anos">Não recomendado para menores de 18 anos</option>
+              <option value="L">Livre para todos os públicos</option>
+              <option value="+10 anos">Não recomendado para menores de 10 anos</option>
+              <option value="+12 anos">Não recomendado para menores de 12 anos</option>
+              <option value="+14 anos">Não recomendado para menores de 14 anos</option>
+              <option value="+16 anos">Não recomendado para menores de 16 anos</option>
+              <option value="+18 anos">Não recomendado para menores de 18 anos</option>
             </select>
           </div>
 
@@ -90,13 +92,15 @@
     </div>
   </div>
 </div>
-
+<script>
+  console.log(document.getElementsByName('classificacaoIndicativa').values)
+</script>
 @vite([
         
         'resources/assets/vendors/select2/select2.min.js',
         'resources/assets/vendors/typeahead.js/typeahead.bundle.min.js',
         // Custom js for this page 
-        'resources/assets/js/file-upload.js',
+        'resources/assets/js/image-upload.js',
         'resources/assets/js/typeahead.js',
         'resources/assets/js/select2.js',
     ])

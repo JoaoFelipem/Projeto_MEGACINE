@@ -5,8 +5,7 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">Filmes</li>
-      <li class="breadcrumb-item active" aria-current="page"><a
-          href="/resources/views/pages/filmes/create.edge">Adicionar Novo</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="create">Adicionar Novo</a></li>
     </ol>
   </nav>
 </div>
@@ -22,13 +21,16 @@
         <div class="table-responsive">
           <table class="table">
             @each(item in filmes)
+            <div>
               <span class="input-group-append">
-                <input name="" value="">
+                <input name="capa" id="capa" hidden value="{{ item.capa }}">
                 <img alt="Prévia" id="preview" height="300px" width="250px" style="border-radius: 10px; margin: 4px">
               </span>
-              <label style="text-align: center; padding: 10px 25% 10px 25%; margin: 4px; border-radius: 6px; text-decoration: underline; font-size: small; width: max-content">
+              <label
+                style="text-align: center; padding: 10px 25% 10px 25%; margin: 4px; border-radius: 6px; text-decoration: underline; font-size: small; width: max-content">
                 {{ item.titulo }}
               </label>
+            </div>
             @end
           </table>
         </div>
@@ -52,7 +54,5 @@
 <script src="{{asset('resources/assets/js/image-upload.js')}}"></script>
 <script src="{{asset('resources/assets/js/typeahead.js')}}"></script>
 <script src="{{asset('resources/assets/js/select2.js')}}"></script> -->
-
-@end
 
 @end

@@ -1,10 +1,13 @@
+import Genero from '#models/genero'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class GenerosController {
   /**
    * Display a list of resource
    */
-  async index({}: HttpContext) {}
+  async index({}: HttpContext) {
+    return view.render('pages/generos/index')
+  }
 
   /**
    * Display form to create a new record

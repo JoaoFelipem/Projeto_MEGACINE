@@ -1,7 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Sala from '#models/sala'
 import Poltrona from '#models/poltrona'
-import PoltronasController from './poltronas_controller.js'
 import router from '@adonisjs/core/services/router'
 
 export default class SalasController {

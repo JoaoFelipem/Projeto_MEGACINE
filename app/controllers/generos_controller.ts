@@ -1,12 +1,14 @@
-import Genero from '#models/genero'
 import type { HttpContext } from '@adonisjs/core/http'
+import Genero from '#models/genero'
 
 export default class GenerosController {
   /**
    * Display a list of resource
    */
-  async index({}: HttpContext) {
-    return view.render('pages/generos/index')
+  async index({ view }: HttpContext) {
+    const generos = await Genero.all()
+
+    return view.render('pages/generos/index', { generos })
   }
 
   /**
@@ -17,7 +19,12 @@ export default class GenerosController {
   /**
    * Handle form submission for the create action
    */
-  async store({ request }: HttpContext) {}
+  async store({ request, response }: HttpContext) {
+    const genero = await Genero.create({
+      genero: request.input('genero'),
+    })
+    return response.redirect().toRoute('generos.index')
+  }
 
   /**
    * Show individual record

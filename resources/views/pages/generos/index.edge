@@ -1,5 +1,5 @@
 @layout()
-{{-- Página com a Tabela que lista as salas --}}
+{{-- Página com formulário e lista de generos --}}
 <div class="page-header">
   <h3 class="page-title"> Gêneros </h3>
   <nav aria-label="breadcrumb">
@@ -9,6 +9,28 @@
     </ol>
   </nav>
 </div>
+
+<div class="row">
+  <div class="col-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Basic form elements</h4>
+          <p class="card-description"> Basic form elements </p>
+          <form class="forms-sample" method="POST" action="{{
+          route('generos.store') }}">
+            {{ csrfField() }}
+            <div class="form-group">
+              <label for="inputGenero">Gênero</label>
+              <input type="text" class="form-control" id="inputGenero" name="genero" placeholder="Ex: Ficção científica">
+            </div>
+            <button type="submit" class="btn btn-primary mr-2">Salvar</button>
+            <button type="reset" class="btn btn-dark">Cancelar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
 
 
 <div class="row">
@@ -23,20 +45,14 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Sala</th>
-                <th>Quantidade de fileiras</th>
-                <th>Quantidade de colunas</th>
-                <th>Capacidade máxima</th>
+                <th>Gênero</th>
               </tr>
             </thead>
             <tbody>
-              @each(item in salas)
+              @each(item in generos)
               <tr>
                 <td>{{ item.id }}</td>
-                <td>{{ item.nome }}</td>
-                <td>{{ item.quantidadeFileiras }}</td>
-                <td>{{ item.quantidadeColunas }}</td>
-                <td>{{ item.capacidade }}</td>
+                <td>{{ item.genero }}</td>
               @end
             </tbody>
           </table>

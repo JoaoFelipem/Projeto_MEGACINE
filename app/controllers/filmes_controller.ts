@@ -32,17 +32,25 @@ export default class FilmesController {
       data_estreia: request.input('dataEstreia'),
       data_termino: request.input('dataTermino'),
     })
-    return response.redirect().toRoute('salas.index')
+    return response.redirect().toRoute('filmes.index')
   }
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {}
+  async show({ params, view }: HttpContext) {
+    const filme = await Filme.find(params.id)
+
+    return view.render('pages/filmes/info', { filme })
+  }
 
   /**
    * Edit individual record
    */
-  async edit({ params }: HttpContext) {}
+  async edit({ params, view }: HttpContext) {
+    const filme = await Filme.find(params.id)
+
+    return view.render('pages/filmes/create', { filme })
+  }
 
   /**
    * Handle form submission for the edit action

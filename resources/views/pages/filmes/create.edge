@@ -2,13 +2,9 @@
 {{-- Página do formulário para cadastrar filmes --}}
 <div class="page-header">
   <h3 class="page-title"> Filmes - Novo </h3>
-  {{-- <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Forms</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-    </ol>
-  </nav> --}}
 </div>
+
+
 <div class="row">
   <div class="col-12 grid-margin stretch-card">
     <div class="card">
@@ -27,13 +23,14 @@
             <input type="file" id="upload" accept="image/png, image/jpeg" name="img[]" class="file-upload-default">
             <div class="input-group col-xs-12">
               <!-- Campo responsável por guardar o Hash da imagem | Referir através do ID "capa" -->
-              <input id="capa" type="textarea" class="form-control file-upload-info" hidden name="capa" >
+              <input id="capa" type="textarea" class="form-control file-upload-info" hidden name="capa">
 
               <div style="margin: 0px 24px 0px 0px; border: 5px solid #2c2e33; border-radius: 12px;">
 
                 <span class="input-group-append">
                   <input class="file-upload-browse btn" for="capa" type="file" id="file" hidden />
-                  <img alt="Prévia da imagem" id="preview" height="300px" width="250px" style="border-radius: 10px; margin: 4px">
+                  <img alt="Prévia da imagem" id="preview" height="300px" width="250px"
+                    style="border-radius: 10px; margin: 4px">
                 </span>
                 <label for="file" accept="image/png, image/jpeg" class="btn btn-primary"
                   style="text-align: center; padding: 10px 25% 10px 25%; margin: 4px; border-radius: 6px; text-decoration: underline; font-size: small; width: max-content">
@@ -41,11 +38,11 @@
               </div>
               <span class="form-group">
                 <label for="sinopse">Sinopse</label>
-                <textarea class="form-control" id="sinopse" cols="105" name="sinopse"rows="20"></textarea>
+                <textarea class="form-control" id="sinopse" cols="105" name="sinopse" rows="20"></textarea>
               </span>
             </div>
           </div>
-          
+
           <div class="form-group">
             <label for="genero">Gêneros</label>
             <select class="form-control" id="genero">
@@ -75,7 +72,7 @@
             <label for="direcao">Direção</label>
             <input type="text" class="form-control" id="direcao" name="direcao" placeholder="Ex: Martin Escocês">
           </div>
-          
+
           <div class="form-group">
             <label for="dataEst">Data estreia</label>
             <input type="date" class="form-control" id="dataEst" name="dataEstreia" placeholder="Ex: Martin Escocês">
@@ -85,7 +82,7 @@
             <label for="dataTer">Data termino</label>
             <input type="date" class="form-control" id="dataTer" name="dataTermino" placeholder="Ex: Martin Escocês">
           </div>
-                    
+
           <button type="submit" class="btn btn-primary mr-2">Submit</button>
           <button class="btn btn-dark">Cancel</button>
         </form>
@@ -97,14 +94,14 @@
   console.log(document.getElementsByName('classificacaoIndicativa').values)
 </script>
 @vite([
-        
-        'resources/assets/vendors/select2/select2.min.js',
-        'resources/assets/vendors/typeahead.js/typeahead.bundle.min.js',
-        // Custom js for this page 
-        'resources/assets/js/image-upload.js',
-        'resources/assets/js/typeahead.js',
-        'resources/assets/js/select2.js',
-    ])
+
+'resources/assets/vendors/select2/select2.min.js',
+'resources/assets/vendors/typeahead.js/typeahead.bundle.min.js',
+// Custom js for this page
+'resources/assets/js/image-upload.js',
+'resources/assets/js/typeahead.js',
+'resources/assets/js/select2.js',
+])
 
 <!--<script src="{{asset('resources/assets/vendors/select2/select2.min.js')}}"></script>
 <script src="{{asset('resources/assets/vendors/typeahead.js/typeahead.bundle.min.js')}}"></script>
@@ -113,5 +110,3 @@
 <script src="{{asset('resources/assets/js/select2.js')}}"></script> -->
 
 @end
-
-

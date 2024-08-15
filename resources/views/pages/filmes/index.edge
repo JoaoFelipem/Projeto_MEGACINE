@@ -16,23 +16,25 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Lista de Filmes</h4>
-        </p>
         <div class="table-responsive">
           <table class="table">
 
             <div class="form-group">
               <div class="input-group col-xs-12">
                 @each(item in filmes)
-                <div style="margin: 0px 24px 0px 0px; border: 5px solid #2c2e33; border-radius: 12px;">
-                  <span class="input-group-append">
-                    <p id="capa" hidden> {{ item.capa }} </p>
-                    <img alt="Prévia da imagem" id="preview" height="300px" width="250px" src="{{ item.capa }}"
-                      style="border-radius: 10px; margin: 4px">
-                  </span>
-                  <label for="file" accept="image/png, image/jpeg" class="text"
-                    style="text-align: center; padding: 10px 25% 10px 25%; margin: 4px; border-radius: 6px; text-decoration: underline; font-size: small; width: max-content; align-content: center">
-                    {{ item.titulo }} </label>
-                </div>
+                <a href="{{ route('filmes.show', [item.id]) }}" style="color: white">
+                  <div style="margin: 0px 24px 0px 0px; border: 5px solid #2c2e33; border-radius: 12px;">
+                    <span class="input-group-append">
+                      <img alt="Prévia da imagem" id="preview" height="300px" width="250px" src="{{ item.capa }}"
+                        style="border-radius: 10px; margin: 4px">
+                    </span>
+                    <div>
+                      <p
+                        style="padding-top: 10px; margin-left: auto; margin-right: auto; border-radius: 6px; font-size: medium; width: max-content;">
+                        {{ item.titulo }} </p>
+                    </div>
+                  </div>
+                </a>
                 @end
               </div>
           </table>

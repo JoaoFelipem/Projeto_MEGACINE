@@ -1,0 +1,36 @@
+@layout()
+{{-- Página com a Tabela que lista as salas --}}
+<div class="page-header">
+    <h3 class="page-title"> Informações </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page"><a href="/filmes/">Voltar</a></li>
+        </ol>
+    </nav>
+</div>
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <div style="margin: 0px 24px 0px 0px;">
+                            <span class="input-group">
+                                <img alt="Prévia da imagem" id="preview" height="500px" width="400px"
+                                    src="{{ filme.capa }}" style="border-radius: 10px; margin: 4px">
+                                    <p
+                                    style="padding-top: 10px; margin-left: auto; margin-right: auto; border-radius: 6px; font-size: medium; width: max-content;">
+                                    {{ filme.titulo }} </p>
+                            </span>
+                            <div>
+                            </div>
+                        </div>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@end

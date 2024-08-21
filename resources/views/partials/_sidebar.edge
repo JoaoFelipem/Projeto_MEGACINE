@@ -56,23 +56,43 @@
     <li class="nav-item nav-category">
       <span class="nav-link">Navigation</span>
     </li>
+    
+    {{-- Botões laterais--}}
     <li class="nav-item menu-items">
-      <a class="nav-link" href="/filmes/">
+      <a class="nav-link" href="pages/forms/basic_elements.html">
+        <span class="menu-icon">
+          <i class="mdi mdi-ticket"></i>
+        </span>
+        <span class="menu-title">Vendas</span>
+      </a>
+    </li>
+
+    <li class="nav-item menu-items">
+      <a class="nav-link" data-toggle="collapse" href="#filmes" aria-expanded="false" aria-controls="filmes">
         <span class="menu-icon">
           <i class="mdi mdi-movie"></i>
         </span>
         <span class="menu-title">Filmes</span>
+        <i class="menu-arrow"></i>
       </a>
+      <div class="collapse" id="filmes">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/generos">Generos</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/filmes">Filmes</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/filmes/create">Adicionar filme</a></li>
+        </ul>
+      </div>
     </li>
+
     <li class="nav-item menu-items">
-      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+      <a class="nav-link" data-toggle="collapse" href="#sessao" aria-expanded="false" aria-controls="sessao">
         <span class="menu-icon">
           <i class="mdi mdi-theater"></i>
         </span>
         <span class="menu-title">Sessões</span>
         <i class="menu-arrow"></i>
       </a>
-      <div class="collapse" id="ui-basic">
+      <div class="collapse" id="sessao">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="/salas">Salas</a></li>
           <li class="nav-item"> <a class="nav-link" href="/salas/create">Adicionar sala</a></li>
@@ -80,15 +100,6 @@
           <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Adicionar sessão</a></li>
         </ul>
       </div>
-    </li>
-
-    <li class="nav-item menu-items">
-      <a class="nav-link" href="pages/forms/basic_elements.html">
-        <span class="menu-icon">
-          <i class="mdi mdi-ticket"></i>
-        </span>
-        <span class="menu-title">Vender ingresso</span>
-      </a>
     </li>
 
     <li class="nav-item menu-items">

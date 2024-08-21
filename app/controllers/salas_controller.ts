@@ -2,6 +2,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 import Sala from '#models/sala'
 import Poltrona from '#models/poltrona'
 import router from '@adonisjs/core/services/router'
+import { createSalaValidator, messagesSalaProvider } from '#validators/sala'
 
 export default class SalasController {
   /**
@@ -24,11 +25,16 @@ export default class SalasController {
    * Handle form submission for the create action
    */
   async store({ request, response, session }: HttpContext) {
+    const dados = request.all()
+    const dadosValidados = await createSalaValidator.validate(dados, {
+      messagesProvider: messagesSalaProvider,
+    })
+
     const sala = await Sala.create({
-      nome: request.input('nome'),
-      quantidadeFileiras: request.input('quantidadeFileiras'),
-      quantidadeColunas: request.input('quantidadeColunas'),
-      capacidade: request.input('capacidade'),
+      nome: dadosValidados.nome,
+      quantidadeFileiras: dadosValidados.quantidadeFileiras,
+      quantidadeColunas: dadosValidados.quantidadeColunas,
+      capacidade: dadosValidados.capacidade,
     })
     /*const poltrona = await Poltrona.create({
       fileira: 1,
@@ -46,6 +52,14 @@ export default class SalasController {
         ])
       }
     }
+
+    if (sala.$isPersisted) {
+      session.flash('notificacao', {
+        type: 'success',
+        message: `${sala.nome} cadastrada com sucesso!`,
+      })
+    }
+
     return response.redirect().toRoute('salas.index')
   }
 
@@ -57,12 +71,26 @@ export default class SalasController {
   /**
    * Edit individual record
    */
-  async edit({ params }: HttpContext) {}
+  async edit({ params, view }: HttpContext) {
+    const sala = await Sala.find(params.id)
+
+    return view.render('pages/salas/create', { sala })
+  }
 
   /**
    * Handle form submission for the edit action
    */
-  async update({ params, request }: HttpContext) {}
+  async update({ params, request, response, session }: HttpContext) {
+    const sala = await Sala.find(params.id)
+
+    if (!sala) {
+      session.flash('notificacao', {
+        type: 'danger',
+        message: `Sala informada não encontrada!`,
+      })
+    }
+
+  }
 
   /**
    * Delete record

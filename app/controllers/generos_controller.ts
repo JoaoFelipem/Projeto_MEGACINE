@@ -1,5 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Genero from '#models/genero'
+import { createGeneroValidator, messagesGeneroProvider } from '#validators/genero'
 
 export default class GenerosController {
   /**
@@ -19,10 +20,23 @@ export default class GenerosController {
   /**
    * Handle form submission for the create action
    */
-  async store({ request, response }: HttpContext) {
-    const genero = await Genero.create({
-      genero: request.input('genero'),
+  async store({ request, response, session }: HttpContext) {
+    const dados = request.all()
+    const dadosValidados = await createGeneroValidator.validate(dados, {
+      messagesProvider: messagesGeneroProvider,
     })
+
+    const genero = await Genero.create({
+      genero: dadosValidados.genero,
+    })
+
+    if (genero.$isPersisted) {
+      session.flash('notificacao', {
+        type: 'success',
+        message: `Gênero ${genero.genero} cadastrado com sucesso!`,
+      })
+    }
+
     return response.redirect().toRoute('generos.index')
   }
 

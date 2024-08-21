@@ -4,8 +4,8 @@
   <h3 class="page-title"> Gêneros </h3>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Forms</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+      <li class="breadcrumb-item">Filmes</li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="filmes/create">Adicionar Novo</a></li>
     </ol>
   </nav>
 </div>
@@ -22,6 +22,9 @@
             <div class="form-group">
               <label for="inputGenero">Gênero</label>
               <input type="text" class="form-control" id="inputGenero" name="genero" placeholder="Ex: Ficção científica">
+              @inputError('genero')
+              <span class="text-danger"> {{ $messages.join(', ') }} </span>
+              @end
             </div>
             <button type="submit" class="btn btn-primary mr-2">Salvar</button>
             <button type="reset" class="btn btn-dark">Cancelar</button>

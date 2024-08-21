@@ -2,6 +2,12 @@
 {{-- Página do formulário para cadastrar filmes --}}
 <div class="page-header">
   <h3 class="page-title"> Filmes - Novo </h3>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Filmes</li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="/filmes">Lista</a></li>
+    </ol>
+  </nav>
 </div>
 
 
@@ -9,8 +15,7 @@
   <div class="col-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Basic form elements</h4>
-        <p class="card-description"> Basic form elements </p>
+        <h4 class="card-title">Formulário de Filmes</h4>
         <form class="forms-sample" method="POST" action="{{ route('filmes.store') }}">
 
           {{ csrfField() }}

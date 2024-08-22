@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import type { ManyToMany } from '@adonisjs/lucid/types/relations'
+import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
+import Genero from './genero.js'
 
 export default class Filme extends BaseModel {
   @column({ isPrimary: true })
@@ -34,4 +36,7 @@ export default class Filme extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
+
+  @manyToMany(() => Genero)
+  declare generos: ManyToMany<typeof Genero>
 }

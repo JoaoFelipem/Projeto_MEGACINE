@@ -90,10 +90,37 @@ export default class SalasController {
       })
     }
 
+    const dados = await createSalaValidator.validate(request.all(), {
+      messagesProvider: messagesSalaProvider,
+    })
+
+    await sala?.merge(dados).save()
+
+    if (sala?.$isPersisted) {
+      session.flash('notificacao', {
+        type: 'warning',
+        message: `${sala.nome} atualizada com sucesso`,
+      })
+    }
+
+    return response.redirect().toRoute('salas.index')
   }
 
   /**
    * Delete record
    */
-  async destroy({ params }: HttpContext) {}
+  async destroy({ params, session, response }: HttpContext) {
+    const sala = await Sala.find(params.id)
+
+    await sala?.delete()
+
+    if (sala?.$isDeleted) {
+      session.flash('notificacao', {
+        type: 'success',
+        message: `Sala excluída com sucesso!`,
+      })
+    }
+
+    return response.redirect().toRoute('salas.index')
+  }
 }

@@ -26,8 +26,12 @@ export default class GenerosController {
       messagesProvider: messagesGeneroProvider,
     })
 
+    //Deixa a primeira letra do genero maiuscula
+    let generoMin = dadosValidados.genero.toLowerCase()
+    let generoUp = generoMin.charAt(0).toUpperCase() + generoMin.slice(1)
+
     const genero = await Genero.create({
-      genero: dadosValidados.genero,
+      genero: generoUp,
     })
 
     if (genero.$isPersisted) {

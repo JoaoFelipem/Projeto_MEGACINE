@@ -10,8 +10,6 @@ export const messagesSalaProvider = new SimpleMessagesProvider({
   'quantidadeColunas.min': 'A quantidade mínima de colunas é 1',
   'quantidadeFileiras.max': 'A quantidade máxima de fileiras permitidas é 26',
   'quantidadeColunas.max': 'A quantidade máxima de colunas permitidas é 26',
-  'capacidade.min': 'A capacidade mínima de poltronas da sala é 1',
-  'capacidade.max': 'A capacidade máxima de poltronas da sala é 676',
 })
 
 export const createSalaValidator = vine.compile(
@@ -19,6 +17,5 @@ export const createSalaValidator = vine.compile(
     nome: vine.string().minLength(3),
     quantidadeFileiras: vine.number().min(1).max(26).withoutDecimals(),
     quantidadeColunas: vine.number().min(1).max(26).withoutDecimals(),
-    capacidade: vine.number().withoutDecimals().min(1).max(676),
   })
 )

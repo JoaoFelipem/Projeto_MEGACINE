@@ -47,7 +47,7 @@
           
           <div class="form-group">
             <label for="inputCapacidade">Capacidade</label>
-            <input type="number" readonly="true" class="form-control" id="inputCapacidade" name="capacidade">
+            <input type="number" disabled style="color: black" class="form-control" id="inputCapacidade">
             @inputError('capacidade')
             <span class="text-danger"> {{ $messages.join(', ') }} </span>
             @end

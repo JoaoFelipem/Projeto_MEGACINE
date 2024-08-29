@@ -1,15 +1,14 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'generos_filmes'
+  protected tableName = 'sessoes'
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
-      table.integer('filme_id').unsigned().references('filmes.id')
-      table.integer('genero_id').unsigned().references('generos.id')
-      table.unique(['filme_id', 'genero_id'])
-
+      table.increments('id').primary()
+      table.date('data_sessao')
+      table.integer('filme_id').unsigned().references('filmes.id').onDelete('CASCADE')
+      table.integer('sala_id').unsigned().references('salas.id').onDelete('CASCADE')
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })

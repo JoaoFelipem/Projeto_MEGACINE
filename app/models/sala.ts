@@ -27,5 +27,4 @@ export default class Sala extends BaseModel {
 
   @hasMany(() => Poltrona)
   declare poltronas: HasMany<typeof Poltrona>
-  
 }

@@ -15,7 +15,4 @@ export default class Genero extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
-
-  @manyToMany(() => Filme)
-  declare filmes: ManyToMany<typeof Filme>
 }

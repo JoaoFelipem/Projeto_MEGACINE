@@ -34,7 +34,7 @@ export default class SalasController {
       nome: dadosValidados.nome,
       quantidadeFileiras: dadosValidados.quantidadeFileiras,
       quantidadeColunas: dadosValidados.quantidadeColunas,
-      capacidade: dadosValidados.capacidade,
+      capacidade: dadosValidados.quantidadeColunas * dadosValidados.quantidadeFileiras,
     })
     /*const poltrona = await Poltrona.create({
       fileira: 1,

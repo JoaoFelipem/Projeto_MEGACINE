@@ -1,4 +1,5 @@
 import Filme from '#models/filme'
+import Genero from '#models/genero'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class FilmesController {
@@ -15,7 +16,9 @@ export default class FilmesController {
    * Display form to create a new record
    */
   async create({ view }: HttpContext) {
-    return view.render('pages/filmes/create')
+    const generos = await Genero.all()
+
+    return view.render('pages/filmes/create', { generos })
   }
 
   /**
@@ -48,8 +51,9 @@ export default class FilmesController {
    */
   async edit({ params, view }: HttpContext) {
     const filme = await Filme.find(params.id)
+    const generos = await Genero.all()
 
-    return view.render('pages/filmes/create', { filme })
+    return view.render('pages/filmes/create', { filme, generos })
   }
 
   /**

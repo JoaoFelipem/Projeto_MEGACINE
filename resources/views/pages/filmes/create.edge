@@ -48,9 +48,24 @@
             </div>
           </div>
 
-          <form method="post" action="{{ route('') }}">
+          <div class="form-group row">
+            <div class="col">
+              <label for="inputGenero">Gêneros</label>
 
-          </form>
+              <select class="form-control" id="inputGenero" name="genero">
+                <option value="NaN">Selecione os gêneros:</option>
+                  @each(gen in generos)
+                    <option value="{{ gen.id }}">{{ gen.genero }}</option>
+                  @end
+              </select>
+            </div>
+
+            <div class="col">
+              <button type="submit" class="btn btn-primary" style="margin-top: 1.7rem;">
+                Adicionar
+              </button>
+            </div>
+          </div>
           
           <div class="form-group">
             <label for="duracao">Duração (Em minutos)</label>

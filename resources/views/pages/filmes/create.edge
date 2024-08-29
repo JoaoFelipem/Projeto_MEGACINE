@@ -51,22 +51,21 @@
           <div class="form-group row">
             <div class="col">
               <label for="inputGenero">Gêneros</label>
-
-              <select class="form-control" id="inputGenero" name="genero">
-                <option value="NaN">Selecione os gêneros:</option>
-                  @each(gen in generos)
-                    <option value="{{ gen.id }}">{{ gen.genero }}</option>
-                  @end
-              </select>
-            </div>
-
-            <div class="col">
-              <button type="submit" class="btn btn-primary" style="margin-top: 1.7rem;">
-                Adicionar
-              </button>
+              <div id="generoCheckboxes">
+                @each(gen in generos)
+                <div class="form-check" style="display: inline-block">
+                  <input class="form-check-input" type="checkbox" value="{{ gen.id }}" 
+                  id="genero{{ gen.id }}" name="generos[]">
+                  <label class="form-check-label" for="genero{{ gen.id }}" style="display: inline-block">
+                    {{ gen.genero }}
+                  </label>
+                </div>
+                <p style="display: inline-block; padding: 0px 10px 0px 10px;"> | </p>
+                @end
+              </div>
             </div>
           </div>
-          
+
           <div class="form-group">
             <label for="duracao">Duração (Em minutos)</label>
             <input type="number" class="form-control" id="duracao" name="duracao" placeholder="Ex: 110">

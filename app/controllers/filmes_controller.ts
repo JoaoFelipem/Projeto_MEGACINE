@@ -24,7 +24,8 @@ export default class FilmesController {
   /**
    * Handle form submission for the create action
    */
-  async store({ request, response, session }: HttpContext) {
+  async store({ params , request, response }: HttpContext) {
+    
     const filme = await Filme.create({
       titulo: request.input('titulo'),
       capa: request.input('capa'),
@@ -35,6 +36,13 @@ export default class FilmesController {
       data_estreia: request.input('dataEstreia'),
       data_termino: request.input('dataTermino'),
     })
+
+    const listaGeneros = request.input('generos')
+
+    if (listaGeneros && listaGeneros.length > 0){
+      await filme.related('generos').attach(listaGeneros)
+    }
+
     return response.redirect().toRoute('filmes.index')
   }
   /**
@@ -65,12 +73,4 @@ export default class FilmesController {
    * Delete record
    */
   async destroy({ params }: HttpContext) {}
-}
-
-async function associarGenerosAFilme(filmeId, generosIds) {
-  const filme = await Filme.findOrFail(filmeId)
-  await filme.related('generos').attach(generosIds)
-  await filme.load('generos')
-
-  return filme
 }

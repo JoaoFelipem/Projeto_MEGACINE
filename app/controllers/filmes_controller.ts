@@ -66,3 +66,11 @@ export default class FilmesController {
    */
   async destroy({ params }: HttpContext) {}
 }
+
+async function associarGenerosAFilme(filmeId, generosIds) {
+  const filme = await Filme.findOrFail(filmeId)
+  await filme.related('generos').attach(generosIds)
+  await filme.load('generos')
+
+  return filme
+}

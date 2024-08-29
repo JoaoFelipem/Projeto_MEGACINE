@@ -7,7 +7,7 @@ export default class GenerosController {
    * Display a list of resource
    */
   async index({ view }: HttpContext) {
-    const generos = await Genero.all()
+    const generos = await Genero.query().orderBy('id')
 
     return view.render('pages/generos/index', { generos })
   }

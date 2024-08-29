@@ -37,6 +37,8 @@ export default class Filme extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @manyToMany(() => Genero)
+  @manyToMany(() => Genero, {
+    pivotTable: 'generos_filmes',
+  })
   declare generos: ManyToMany<typeof Genero>
 }

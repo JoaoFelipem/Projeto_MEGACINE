@@ -25,6 +25,6 @@ export default class Sala extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @hasMany(() => Poltrona)
-  declare poltronas: HasMany<typeof Poltrona>
+  //@hasMany(() => Poltrona
+  //declare poltronas: HasMany<typeof Poltrona>
 }

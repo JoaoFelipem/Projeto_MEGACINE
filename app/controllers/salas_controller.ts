@@ -43,11 +43,18 @@ export default class SalasController {
     })*/
     for (let f = 0; f < request.input('quantidadeFileiras'); f++) {
       for (let c = 0; c < request.input('quantidadeColunas'); c++) {
+        let stPosicao
+        if (c + 1 > 9) {
+          stPosicao = c + 1
+        } else {
+          stPosicao = '0' + (c + 1)
+        }
         const poltrona = await Poltrona.createMany([
           {
             fileira: f + 1,
             coluna: c + 1,
-            posicao: String.fromCharCode(65 + f) + c + 1,
+            posicao: String.fromCharCode(65 + f) + stPosicao,
+            salaId: sala.id,
           },
         ])
       }

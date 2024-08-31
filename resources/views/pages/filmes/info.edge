@@ -15,16 +15,34 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
-                        <div style="margin: 0px 24px 0px 0px;">
-                            <span class="input-group">
+                        <div class="card" style="margin: 0px 24px 0px 0px;">
+                            <div>
                                 <img alt="Prévia da imagem" id="preview" height="500px" width="400px"
-                                    src="{{ filme.capa }}" style="border-radius: 10px; margin: 4px">
-                                    <div class="row">
+                                    src="{{ filme.capa }}" style="border-radius: 10px; margin: 10px">
+                                    <div style="display: inline-block">
                                         <p
-                                        style="padding-top: 10px; margin-left: auto; margin-right: auto; border-radius: 6px; font-size: medium; width: max-content;">
+                                        style="padding-top: 10px; margin-left: 20%; margin-right: auto; border-radius: 6px; font-size: 55px; display: inline-block">
                                         {{ filme.titulo }} </p>
+                                        <div>
+                                            <p
+                                        style="padding-top: 10px; margin-left: 20%; margin-right: auto; border-radius: 6px; font-size: 18px; display: inline-block; width: 260px">
+                                        Duração: {{ filme.duracao }} minutos </p>
+                                        <p
+                                        style="padding-top: 10px; margin-left: 20%; margin-right: auto; border-radius: 6px; font-size: 18px; display: inline-block; width: 260px">
+                                        Classificação Indicativa: {{ filme.classificacaoIndicativa }} </p>
+                                        <p
+                                        style="padding-top: 10px; margin-left: 20%; margin-right: auto; border-radius: 6px; font-size: 18px; display: inline-block; width: 260px">
+                                        Sinopse: {{ filme.sinopse }}. </p>
+                                        <p
+                                        style="padding-top: 10px; margin-left: 20%; margin-right: auto; border-radius: 6px; font-size: 18px; display: inline-block; width: 260px">
+                                        Dirigido por: {{ filme.direcao }}. </p>
+                                        <p
+                                        style="padding-top: 10px; margin-left: 20%; margin-right: auto; border-radius: 6px; font-size: 18px; display: inline-block; width: 260px">
+                                        Estreia: {{ filme.dataEstreia }}. </p>
+                                        </div>
                                     </div>
-                            </span>
+                                    
+                                </div>
                             <div>
                             </div>
                         </div>

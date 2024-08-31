@@ -24,17 +24,17 @@ export default class FilmesController {
   /**
    * Handle form submission for the create action
    */
-  async store({ params , request, response }: HttpContext) {
+  async store({ request, response }: HttpContext) {
     
     const filme = await Filme.create({
       titulo: request.input('titulo'),
       capa: request.input('capa'),
       sinopse: request.input('sinopse'),
       duracao: request.input('duracao'),
-      classificacao_indicativa: request.input('classificacaoIndicativa'),
+      classificacaoIndicativa: request.input('classificacaoIndicativa'),
       direcao: request.input('direcao'),
-      data_estreia: request.input('dataEstreia'),
-      data_termino: request.input('dataTermino'),
+      dataEstreia: request.input('dataEstreia'),
+      dataTermino: request.input('dataTermino'),
     })
 
     const listaGeneros = request.input('generos')

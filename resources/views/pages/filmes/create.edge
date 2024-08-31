@@ -52,59 +52,65 @@
             <div class="col">
               <label for="inputGenero">Gêneros</label>
               <div id="generoCheckboxes">
+                @if(generos.length < 1) 
+                  <div>
+                    <p>"Nenhum gênero cadastrado."</p>
+                  </div>
+              @else
                 @each(gen in generos)
-                <div class="form-check" style="display: inline-block">
-                  <input class="form-check-input" type="checkbox" value="{{ gen.id }}" 
-                  id="genero{{ gen.id }}" name="generos[]">
-                  <label class="form-check-label" for="genero{{ gen.id }}" style="display: inline-block">
-                    {{ gen.genero }}
-                  </label>
-                </div>
-                <p style="display: inline-block; padding: 0px 10px 0px 10px;"> | </p>
+                  <div class="form-check" style="display: inline-block">
+                    <input class="form-check-input" type="checkbox" value="{{ gen.id }}" id="genero{{ gen.id }}"
+                      name="generos[]">
+                    <label class="form-check-label" for="genero{{ gen.id }}" style="display: inline-block">
+                      {{ gen.genero }}
+                    </label>
+                  </div>
+                  <p style="display: inline-block; padding: 0px 10px 0px 10px;"> | </p>
                 @end
-              </div>
+              @end
             </div>
           </div>
-
-          <div class="form-group">
-            <label for="duracao">Duração (Em minutos)</label>
-            <input type="number" class="form-control" id="duracao" name="duracao" placeholder="Ex: 110">
-          </div>
-
-          <div class="form-group">
-            <label for="classifica">Classificação indicativa</label>
-            <select class="form-control" id="classifica" name="classificacaoIndicativa">
-              <option selected disabled>Selecione a classificação indicativa</option>
-              <option value="L">Livre para todos os públicos</option>
-              <option value="+10 anos">Não recomendado para menores de 10 anos</option>
-              <option value="+12 anos">Não recomendado para menores de 12 anos</option>
-              <option value="+14 anos">Não recomendado para menores de 14 anos</option>
-              <option value="+16 anos">Não recomendado para menores de 16 anos</option>
-              <option value="+18 anos">Não recomendado para menores de 18 anos</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="direcao">Direção</label>
-            <input type="text" class="form-control" id="direcao" name="direcao" placeholder="Ex: Martin Escocês">
-          </div>
-
-          <div class="form-group">
-            <label for="dataEst">Data estreia</label>
-            <input type="date" class="form-control" id="dataEst" name="dataEstreia" placeholder="Ex: Martin Escocês">
-          </div>
-
-          <div class="form-group">
-            <label for="dataTer">Data termino</label>
-            <input type="date" class="form-control" id="dataTer" name="dataTermino" placeholder="Ex: Martin Escocês">
-          </div>
-
-          <button type="submit" class="btn btn-primary mr-2">Submit</button>
-          <button class="btn btn-dark">Cancel</button>
-        </form>
       </div>
+
+      <div class="form-group">
+        <label for="duracao">Duração (Em minutos)</label>
+        <input type="number" class="form-control" id="duracao" name="duracao" placeholder="Ex: 110">
+      </div>
+
+      <div class="form-group">
+        <label for="classifica">Classificação indicativa</label>
+        <select class="form-control" id="classifica" name="classificacaoIndicativa">
+          <option selected disabled>Selecione a classificação indicativa</option>
+          <option value="L">Livre para todos os públicos</option>
+          <option value="+10 anos">Não recomendado para menores de 10 anos</option>
+          <option value="+12 anos">Não recomendado para menores de 12 anos</option>
+          <option value="+14 anos">Não recomendado para menores de 14 anos</option>
+          <option value="+16 anos">Não recomendado para menores de 16 anos</option>
+          <option value="+18 anos">Não recomendado para menores de 18 anos</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="direcao">Direção</label>
+        <input type="text" class="form-control" id="direcao" name="direcao" placeholder="Ex: Martin Escocês">
+      </div>
+
+      <div class="form-group">
+        <label for="dataEst">Data estreia</label>
+        <input type="date" class="form-control" id="dataEst" name="dataEstreia" placeholder="Ex: Martin Escocês">
+      </div>
+
+      <div class="form-group">
+        <label for="dataTer">Data termino</label>
+        <input type="date" class="form-control" id="dataTer" name="dataTermino" placeholder="Ex: Martin Escocês">
+      </div>
+
+      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+      <button class="btn btn-dark">Cancel</button>
+      </form>
     </div>
   </div>
+</div>
 </div>
 <script>
   console.log(document.getElementsByName('classificacaoIndicativa').values)

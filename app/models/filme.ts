@@ -17,16 +17,16 @@ export default class Filme extends BaseModel {
   declare duracao: number
   
   @column()
-  declare classificacao_indicativa: string
+  declare classificacaoIndicativa: string
   
   @column()
   declare direcao: string
   
   @column()
-  declare data_estreia: Date
+  declare dataEstreia: Date
   
   @column()
-  declare data_termino: Date
+  declare dataTermino: Date
   
   @column()
   declare capa: string

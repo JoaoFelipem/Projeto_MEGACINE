@@ -1,5 +1,8 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Sessao from '#models/sessao'
+import Filme from '#models/filme'
+import Sala from '#models/sala'
+import Poltrona from '#models/poltrona'
 
 export default class SessoesController {
   /**
@@ -12,7 +15,12 @@ export default class SessoesController {
   /**
    * Display form to create a new record
    */
-  async create({}: HttpContext) {}
+  async create({ view }: HttpContext) {
+    const filmes = await Filme.all()
+    const salas = await Sala.all()
+
+    return view.render('pages/sessoes/create', { filmes, salas })
+  }
 
   /**
    * Handle form submission for the create action

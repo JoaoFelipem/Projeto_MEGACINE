@@ -8,9 +8,11 @@ export default class Poltrona extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  //Tabela da fk
   @column()
   declare salaId: number
 
+  //Ajuste no model para fk
   @belongsTo(() => Sala)
   declare sala: BelongsTo<typeof Sala>
 

@@ -10,19 +10,28 @@ export default class Sessao extends BaseModel {
   declare id: number
 
   @column()
-  declare data_sessao: Date
+  declare dataSessao: Date
+
+  @column()
+  declare horarioInicio: Time
+
+  @column()
+  declare filmeId: number
+
+  @belongsTo(() => Filme)
+  declare filme: BelongsTo<typeof Filme>
+
+  @column()
+  declare salaId: number
+
+  @belongsTo(() => Sala)
+  declare sala: BelongsTo<typeof Sala>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
-
-  @belongsTo(() => Filme)
-  declare filme: BelongsTo<typeof Filme>
-
-  @belongsTo(() => Sala)
-  declare sala: BelongsTo<typeof Sala>
 
   @manyToMany(() => Poltrona)
   declare poltronas: ManyToMany<typeof Poltrona>

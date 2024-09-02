@@ -1,10 +1,13 @@
 import type { HttpContext } from '@adonisjs/core/http'
+import Sessao from '#models/sessao'
 
 export default class SessoesController {
   /**
    * Display a list of resource
    */
-  async index({}: HttpContext) {}
+  async index({ view }: HttpContext) {
+    return view.render('pages/sessoes/index')
+  }
 
   /**
    * Display form to create a new record

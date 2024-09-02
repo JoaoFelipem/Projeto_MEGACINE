@@ -1,0 +1,75 @@
+@layout()
+{{-- Página do formulário para criar as salas --}}
+<div class="page-header">
+  <h3 class="page-title"> Salas - Novo </h3>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Salas</li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="/salas">Lista</a></li>
+    </ol>
+  </nav>
+</div>
+
+<div class="row">
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">  
+      <div class="card-body">
+        <h4 class="card-title">Formulário de Salas</h4>
+        <form class="forms-sample" method="POST" action="{{ route('salas.store') }}">
+
+          {{ csrfField() }}
+          <div class="form-group">
+            <label for="inputNome">Nome da sala</label>
+            <input type="text" class="form-control" id="inputNome" name="nome" value="{{ old('nome') || '' }}" placeholder="Ex: sala 1">
+            
+            @inputError('nome')
+            <span class="text-danger"> {{ $messages.join(', ') }} </span>
+            @end
+          </div>
+
+
+          <div class="form-group">
+            <label for="inputQuantFil">Quantidade de fileiras</label>
+            <input type="number" oninput="CalcularCapacidade()" class="form-control" id="inputQuantFil" name="quantidadeFileiras" value="{{ old('quantidadeFileiras') || '' }}" placeholder="Ex: 20">
+
+              @inputError('quantidadeFileiras')
+              <span class="text-danger"> {{ $messages.join(', ') }} </span>
+              @end
+          </div>
+
+          <div class="form-group">
+            <label for="inputQuantCol">Quantidade de colunas</label>
+            <input type="number" oninput="CalcularCapacidade()" class="form-control" id="inputQuantCol" name="quantidadeColunas" value="{{ old('quantidadeColunas') || '' }}" placeholder="Ex: 18">
+              @inputError('quantidadeColunas')
+              <span class="text-danger"> {{ $messages.join(', ') }} </span>
+              @end
+            </div>
+          
+          <div class="form-group">
+            <label for="inputCapacidade">Capacidade</label>
+            <input type="number" disabled style="color: black" class="form-control" id="inputCapacidade">
+            @inputError('capacidade')
+            <span class="text-danger"> {{ $messages.join(', ') }} </span>
+            @end
+          </div>
+
+          <button type="submit" class="btn btn-primary mr-2">Salvar</button>
+          <button type="reset" class="btn btn-dark">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function CalcularCapacidade() {
+    let fileiras = Number(document.getElementById('inputQuantFil').value)
+    let colunas = Number(document.getElementById('inputQuantCol').value)
+    let capacidade = document.getElementById('inputCapacidade')
+    if (fileiras * colunas > 0) {
+      capacidade.value = fileiras * colunas
+    } else {
+      capacidade.value = null
+    }
+  }
+</script>
+@end

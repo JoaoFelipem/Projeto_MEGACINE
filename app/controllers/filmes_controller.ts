@@ -38,8 +38,9 @@ export default class FilmesController {
     })
 
     const listaGeneros = request.input('generos')
+    console.log(listaGeneros)
 
-    if (listaGeneros && listaGeneros.length > 0){
+    if (listaGeneros && listaGeneros.length > 0) {
       await filme.related('generos').attach(listaGeneros)
     }
 

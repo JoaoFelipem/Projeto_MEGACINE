@@ -31,6 +31,9 @@ export default class Poltrona extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @manyToMany(() => Sessao)
+  @manyToMany(() => Sessao, {
+    pivotTable: 'sessoes_poltronas',
+    pivotColumns: ['disponivel'],
+  })
   declare sessoes: ManyToMany<typeof Sessao>
 }

@@ -25,8 +25,8 @@
               <option selected disabled> Não há filmes cadastrados</option>
               @else
               <option selected disabled> Selecione um filme</option>
-                @each(item in filmes)
-                <option value="{{ item.id }}">{{ item.titulo }}</option>
+                @each(filme in filmes)
+                <option value="{{ filme.id }}">{{ filme.titulo }}</option>
                 @end
               @end
             </select>
@@ -39,8 +39,8 @@
               <option selected disabled> Não há salas cadastradas</option>
               @else
               <option selected disabled> Selecione uma sala</option>
-                @each(item in salas)
-                <option value="{{ item.id }}">{{ item.nome }}</option>
+                @each(sala in salas)
+                <option value="{{ sala.id }}">{{ sala.nome }}</option>
                 @end
               @end
             </select>

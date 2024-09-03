@@ -6,6 +6,8 @@ import Sala from './sala.js'
 import Poltrona from './poltrona.js'
 
 export default class Sessao extends BaseModel {
+  static table = 'sessoes'
+
   @column({ isPrimary: true })
   declare id: number
 
@@ -13,7 +15,10 @@ export default class Sessao extends BaseModel {
   declare dataSessao: Date
 
   @column()
-  declare horarioInicio: Time
+  declare horarioInicio: string
+
+  @column()
+  declare horarioFim: string
 
   @column()
   declare filmeId: number
@@ -33,6 +38,9 @@ export default class Sessao extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @manyToMany(() => Poltrona)
+  @manyToMany(() => Poltrona, {
+    pivotTable: 'sessoes_poltronas',
+    pivotColumns: ['disponivel'],
+  })
   declare poltronas: ManyToMany<typeof Poltrona>
 }

@@ -1,0 +1,62 @@
+@layout()
+{{-- Página do formulário para criar as salas --}}
+<div class="page-header">
+  <h3 class="page-title"> Vendas - Nova </h3>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Vendas</li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="/salas">Lista</a></li>
+    </ol>
+  </nav>
+</div>
+
+<div class="row">
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">  
+      <div class="card-body">
+        <h4 class="card-title">Vender ingressos</h4>
+        <form class="forms-sample" method="POST" action="{{ route('vendas.store') }}">
+
+          {{ csrfField() }}
+          <div class="form-group">
+            <label for="selectSessao">Sessão</label>
+            <select class="form-control" id="selectSessao" name="sessao">
+              @if(sessoes.length < 1)
+              <option selected disabled> Não há sessões cadastradas</option>
+              @else
+              <option selected disabled> Selecione uma sessão</option>
+                @each(sessao in sessoes)
+                <option value="{{ sessao.id }}">{{ sessao.filme.titulo }} {{ sessao.dataSessao }}</option>
+                @end
+              @end
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="quantidadePoltronas">Quantidade de poltronas</label>
+            <input type="number" disabled style="color: black" class="form-control" id="quantidadePoltronas">
+          </div>
+
+          <div class="form-group">
+            <label for="inputDataSessao">Data da sessão</label>
+            <input type="date" class="form-control" id="inputDataSessao" name="DataSessao">
+          </div>
+
+          <div class="form-group">
+            <label for="inputTimeInicio">Horário do inicío da sessão</label>
+            <input type="time" min="14:00" max="22:00" class="form-control" id="inputTimeInicio" name="horarioInicio">
+          </div>
+
+          <div class="form-group">
+            <label for="inputTimeFim">Horário do fim da sessão</label>
+            <input type="time" disabled class="form-control" style="color: black"  id="inputTimeFim" name="horarioFim">
+          </div>
+          
+          <button type="submit" class="btn btn-primary mr-2">Salvar</button>
+          <button type="reset" class="btn btn-dark">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+@end

@@ -3,7 +3,6 @@ import Sessao from '#models/sessao'
 import Filme from '#models/filme'
 import Sala from '#models/sala'
 import Poltrona from '#models/poltrona'
-import { forEachChild } from 'typescript'
 
 export default class SessoesController {
   /**

@@ -16,34 +16,25 @@
                 <div class="table-responsive">
                     <table class="table">
                         <div class="card" style="margin: 0px 24px 0px 0px;">
-                            <div>
-                                <img alt="Prévia da imagem" id="preview" height="500px" width="400px"
-                                    src="{{ filme.capa }}" style="border-radius: 10px; margin: 10px">
-                                    <div style="display: inline-block">
-                                        <p
-                                        style="padding-top: 10px; margin-left: 20%; margin-right: auto; border-radius: 6px; font-size: 55px; display: inline-block">
-                                        {{ filme.titulo }} </p>
-                                        <div>
-                                            <p
-                                        style="padding-top: 10px; margin-left: 20%; margin-right: auto; border-radius: 6px; font-size: 18px; display: inline-block; width: 260px">
-                                        Duração: {{ filme.duracao }} minutos </p>
-                                        <p
-                                        style="padding-top: 10px; margin-left: 20%; margin-right: auto; border-radius: 6px; font-size: 18px; display: inline-block; width: 260px">
-                                        Classificação Indicativa: {{ filme.classificacaoIndicativa }} </p>
-                                        <p
-                                        style="padding-top: 10px; margin-left: 20%; margin-right: auto; border-radius: 6px; font-size: 18px; display: inline-block; width: 260px">
-                                        Sinopse: {{ filme.sinopse }}. </p>
-                                        <p
-                                        style="padding-top: 10px; margin-left: 20%; margin-right: auto; border-radius: 6px; font-size: 18px; display: inline-block; width: 260px">
-                                        Dirigido por: {{ filme.direcao }}. </p>
-                                        <p
-                                        style="padding-top: 10px; margin-left: 20%; margin-right: auto; border-radius: 6px; font-size: 18px; display: inline-block; width: 260px">
-                                        Estreia: {{ filme.dataEstreia }}. </p>
-                                        </div>
+                            <div style="display: flex; flex-wrap: wrap; align-items: flex-start;">
+                                <img alt="Prévia da imagem" id="preview"
+                                    style="border-radius: 10px; margin: 10px; max-width: 100%; height: auto;"
+                                    src="{{ filme.capa }}">
+
+                                <div
+                                    style="flex: 1; padding: 10px; display: flex; flex-direction: column; justify-content: space-between; height: 350px;">
+                                    <p
+                                        style="font-size: 2.5em; font-weight: bold; color: #ad47b1; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); background: linear-gradient(to right, #6179e5, #67aaf2); -webkit-background-clip: text; color: transparent; margin-bottom: 20px;">
+                                        {{ filme.titulo }}</p>
+                                    <div>
+                                        <p style="font-size: 1.2em;">Duração: {{ filme.duracao }} </p>
+                                        <p style="font-size: 1.2em;">Classificação Indicativa: {{
+                                            filme.classificacaoIndicativa }}</p>
+                                        <p style="font-size: 1.2em;">Dirigido por: {{ filme.direcao }}</p>
+                                        <p style="font-size: 1.2em;">Estreia: {{ filme.dataEstreia }}</p>
+                                        <p style="font-size: 1.2em;">Sinopse: {{ filme.sinopse }}</p>
                                     </div>
-                                    
                                 </div>
-                            <div>
                             </div>
                         </div>
                     </table>
@@ -53,4 +44,15 @@
     </div>
 </div>
 
+<script>
+    function formatarDuracao(timestamp) {
+    var date = new Date(timestamp * 1000); // Converte o timestamp para milissegundos
+    var hours = date.getUTCHours().toString().padStart(2, '0');
+    var minutes = date.getUTCMinutes().toString().padStart(2, '0');
+    var seconds = date.getUTCSeconds().toString().padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+}
+</script>
+
 @end
+

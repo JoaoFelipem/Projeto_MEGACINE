@@ -34,22 +34,24 @@
 
           <div class="form-group">
             <label for="selectSala">Sala</label>
-            <select class="form-control" id="selectSala" name="sala">
-              @if(salas.length < 1)
-              <option selected disabled> Não há salas cadastradas</option>
-              @else
-              <option selected disabled> Selecione uma sala</option>
-                @each(sala in salas)
-                <option value="{{ sala.id }}">{{ sala.nome }}</option>
+            <select class="form-control" id="selectSala" name="sala" onchange="atualizarPoltronas()">
+                @if(salas.length < 1)
+                    <option selected disabled> Não há salas cadastradas</option>
+                @else
+                    <option selected disabled> Selecione uma sala</option>
+                    @each(sala in salas)
+                    {
+                        <option value="{{ sala.id }}" data-capacidade="{{ sala.capacidade }}">{{ sala.nome }}</option>
+                    }
+                    @end
                 @end
-              @end
             </select>
-          </div>
+        </div>
 
-          <div class="form-group">
-            <label for="quantidadePoltronas">Quantidade de poltronas</label>
-            <input type="number" disabled style="color: black" class="form-control" id="quantidadePoltronas">
-          </div>
+        <div class="form-group">
+          <label for="quantidadePoltronas">Quantidade de poltronas</label>
+          <input type="number" disabled style="color: black" class="form-control" id="quantidadePoltronas">
+        </div>
 
           <div class="form-group">
             <label for="inputDataSessao">Data da sessão</label>
@@ -79,6 +81,9 @@
     let horas = horaInicio[0] + horaInicio[1]
     let minutos = horaInicio[3] + horaInicio[4]
     let horaFim = document.getElementById('inputTimeFim')
+
+    let filme = document.getElementById('selectFilme').value
+
     horas = Number(horas) + 1
     minutos = Number(minutos) + 30
     if(minutos >= 60){
@@ -89,6 +94,14 @@
       }
     }
     horaFim.value = horas+ ":" + minutos
+  }
+
+  function atualizarPoltronas() {
+      var select = document.getElementById("selectSala");
+      var capacidade = select.options[select.selectedIndex].getAttribute("data-capacidade");
+      
+      var input = document.getElementById("quantidadePoltronas");
+      input.value = capacidade ? capacidade : '';
   }
 </script>
 @end

@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import type { ManyToMany } from '@adonisjs/lucid/types/relations'
 import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
 import Genero from './genero.js'
+import { TimeLike } from 'fs'
 
 export default class Filme extends BaseModel {
   @column({ isPrimary: true })

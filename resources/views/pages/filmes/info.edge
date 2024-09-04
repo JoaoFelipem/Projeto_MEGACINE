@@ -18,7 +18,7 @@
                         <div class="card" style="margin: 0px 24px 0px 0px;">
                             <div style="display: flex; flex-wrap: wrap; align-items: flex-start;">
                                 <img alt="Prévia da imagem" id="preview"
-                                    style="border-radius: 10px; margin: 10px; max-width: 100%; height: auto;"
+                                    style="border-radius: 10px; margin: 10px; max-width: 60%; height: auto;"
                                     src="{{ filme.capa }}">
 
                                 <div
@@ -33,9 +33,9 @@
                                         <p style="font-size: 1.2em;">Dirigido por: {{ filme.direcao }}</p>
                                         <p style="font-size: 1.2em;">Estreia: {{ filme.dataEstreia }}</p>
                                         <p style="font-size: 1.2em;">Sinopse: {{ filme.sinopse }}</p>
-
+                                        <p style="font-size: 1.2em; display: inline">Gêneros: </p>
                                         @each(item in filme.generos)
-                                            <p style="font-size: 1.2em;"> {{ item.genero }}</p>
+                                        <p style="font-size: 1.2em; display: inline"> [ {{ item.genero }} ] </p>
                                         @end
                                     </div>
                                 </div>
@@ -50,13 +50,12 @@
 
 <script>
     function formatarDuracao(timestamp) {
-    var date = new Date(timestamp * 1000); // Converte o timestamp para milissegundos
-    var hours = date.getUTCHours().toString().padStart(2, '0');
-    var minutes = date.getUTCMinutes().toString().padStart(2, '0');
-    var seconds = date.getUTCSeconds().toString().padStart(2, '0');
-    return `${hours}:${minutes}:${seconds}`;
-}
+        var date = new Date(timestamp * 1000); // Converte o timestamp para milissegundos
+        var hours = date.getUTCHours().toString().padStart(2, '0');
+        var minutes = date.getUTCMinutes().toString().padStart(2, '0');
+        var seconds = date.getUTCSeconds().toString().padStart(2, '0');
+        return `${hours}:${minutes}:${seconds}`;
+    }
 </script>
 
 @end
-

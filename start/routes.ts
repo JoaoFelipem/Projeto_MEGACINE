@@ -23,3 +23,5 @@ router.resource('poltronas', PoltronasController)
 router.resource('filmes', FilmesController)
 router.resource('sessoes', SessoesController)
 router.resource('vendas', VendasController)
+
+router.post('vendas/:id/', [VendasController, 'chairSelect']).as('vendas.chairSelect')

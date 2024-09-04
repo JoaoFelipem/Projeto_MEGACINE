@@ -1,5 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Sessao from '#models/sessao'
+import Venda from '#models/venda'
+import Poltrona from '#models/poltrona'
 
 
 export default class VendasController {
@@ -13,15 +15,46 @@ export default class VendasController {
   /**
    * Display form to create a new record
    */
-  async create({ view }: HttpContext) {
+  async create({ view, request }: HttpContext) {
     const sessoes = await Sessao.all()
     return view.render('pages/vendas/create', { sessoes })
+  }
+
+  async chairSelect({ view, params, request }: HttpContext){
+    const venda = await Venda.find(params.id)
+    await venda?.load('sessao')
+
+    let sessao = venda?.sessao
+    let poltronas = await Sessao.query().where('id', sessao!.id).preload('poltronas', (poltronaQuery) => { poltronaQuery.pivotColumns(['disponivel']) }).firstOrFail()
+    
+
+    return view.render('pages/vendas/chair-select', { venda, poltronas })
   }
 
   /**
    * Handle form submission for the create action
    */
-  async store({ request }: HttpContext) {}
+  async store({ request, response }: HttpContext) {
+    const dados = request.all();
+    const sessao = await Sessao.find(dados.sessao)
+
+    const venda = await Venda.create({
+      dataVenda: dados.dataVenda,
+      quantIngInt: dados.dataFinal,
+      quantIngMeia: request.input('inputMeia'),
+      sessaoId: sessao.id,
+      valorInt: request.input('totalInt'),
+      valorMeia: request.input('totalMeia'),
+      valorTotal: request.input('totalVenda')
+    })
+
+    await venda.related('sessao').associate(sessao!)
+
+    if (venda.$isPersisted) {
+      return response.redirect().toRoute('vendas.chairSelect', { id: venda.id })
+    }
+
+  }
 
   /**
    * Show individual record

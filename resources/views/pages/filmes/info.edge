@@ -33,6 +33,10 @@
                                         <p style="font-size: 1.2em;">Dirigido por: {{ filme.direcao }}</p>
                                         <p style="font-size: 1.2em;">Estreia: {{ filme.dataEstreia }}</p>
                                         <p style="font-size: 1.2em;">Sinopse: {{ filme.sinopse }}</p>
+
+                                        @each(item in filme.generos)
+                                            <p style="font-size: 1.2em;"> {{ item.genero }}</p>
+                                        @end
                                     </div>
                                 </div>
                             </div>

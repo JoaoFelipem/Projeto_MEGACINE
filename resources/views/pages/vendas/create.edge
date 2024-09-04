@@ -15,7 +15,10 @@
     <div class="card">  
       <div class="card-body">
         <h4 class="card-title">Vender ingressos</h4>
-        <form class="forms-sample" method="POST" action="{{ route('vendas.store') }}">
+        <form class="forms-sample" method="POST" action="{{ !sessao ?
+            route('vendas.store') :
+            route('vendas.update', { id: sessao.id }, { qs: { _method: 'PUT' } })
+      }}">
 
           {{ csrfField() }}
           <div class="form-group">

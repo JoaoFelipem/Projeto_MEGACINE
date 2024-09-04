@@ -1,0 +1,32 @@
+@layout()
+{{-- Página do formulário para criar as salas --}}
+<div class="page-header">
+  <h3 class="page-title"> Vendas - Nova </h3>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Vendas</li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="/salas">Lista</a></li>
+    </ol>
+  </nav>
+</div>
+
+<div class="row">
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">  
+      <div class="card-body">
+        <h4 class="card-title">Vender ingressos</h4>
+        <form class="forms-sample" method="POST" action="{{ route('vendas.store') }}">
+
+          {{ csrfField() }}
+          @each(poltrona in poltronas)
+          <option value="{{ poltrona.id }}">{{ poltrona.posicao }} </option>
+          @end
+          
+          <button type="submit" class="btn btn-primary mr-2">Salvar</button>
+          <button type="reset" class="btn btn-dark">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+@end

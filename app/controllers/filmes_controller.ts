@@ -50,7 +50,7 @@ export default class FilmesController {
    * Show individual record
    */
   async show({ params, view }: HttpContext) {
-    const filme = await Filme.find(params.id)
+    const filme = await Filme.query().where('id', params.id).preload('generos').firstOrFail()
 
     return view.render('pages/filmes/info', { filme })
   }

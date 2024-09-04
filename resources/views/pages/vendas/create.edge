@@ -26,30 +26,35 @@
               @else
               <option selected disabled> Selecione uma sessão</option>
                 @each(sessao in sessoes)
-                <option value="{{ sessao.id }}">{{ sessao.filme.titulo }} {{ sessao.dataSessao }}</option>
+                <option value="{{ sessao.id }}">{{ sessao.filme }} {{ sessao.dataSessao }}</option>
                 @end
               @end
             </select>
           </div>
 
           <div class="form-group">
-            <label for="quantidadePoltronas">Quantidade de poltronas</label>
-            <input type="number" disabled style="color: black" class="form-control" id="quantidadePoltronas">
+            <label for="inputMeia">Quantidade de ingressos de meias-entradas</label>
+            <input type="number" oninput="TotalVenda()" class="form-control" id="inputMeia" name="ingressosMeia" placeholder="Ex: 4">
           </div>
 
           <div class="form-group">
-            <label for="inputDataSessao">Data da sessão</label>
-            <input type="date" class="form-control" id="inputDataSessao" name="DataSessao">
+            <label for="totalMeia">Total das meias-entradas</label>
+            <input type="text" style="color: black"  disabled class="form-control" id="totalMeia">
           </div>
 
           <div class="form-group">
-            <label for="inputTimeInicio">Horário do inicío da sessão</label>
-            <input type="time" min="14:00" max="22:00" class="form-control" id="inputTimeInicio" name="horarioInicio">
+            <label for="inputInt">Quantidade de ingressos inteiros</label>
+            <input type="number" oninput="TotalVenda()" class="form-control" id="inputInt" name="ingressosInt" placeholder="Ex: 3">
           </div>
 
           <div class="form-group">
-            <label for="inputTimeFim">Horário do fim da sessão</label>
-            <input type="time" disabled class="form-control" style="color: black"  id="inputTimeFim" name="horarioFim">
+            <label for="totalInt">Total dos ingressos inteiros</label>
+            <input type="text" style="color: black"  disabled class="form-control" id="totalInt">
+          </div>
+
+          <div class="form-group">
+            <label for="totalVenda">Valor total da venda</label>
+            <input type="text" disabled style="color: black"  class="form-control" id="totalVenda">
           </div>
           
           <button type="submit" class="btn btn-primary mr-2">Salvar</button>
@@ -59,4 +64,57 @@
     </div>
   </div>
 </div>
+<script>
+  /*function TotalMeia() {
+    let quantMeia = Number(document.getElementById('inputMeia').value)
+    let totalMeia = document.getElementById('totalMeia')
+    if (quantMeia * 10 > 0) {
+      totalMeia.value ='R$'  + (quantMeia * 10) + ',00'
+    } else {
+      totalMeia.value = null
+    }
+  }*/
+  /*function TotalInteira() {
+    let quantInt = Number(document.getElementById('inputInt').value)
+    let totalInt = document.getElementById('totalInt')
+    if (quantInt * 20 > 0) {
+      totalInt.value = 'R$'  + (quantInt * 20) + ',00'
+    } else {
+      totalInt.value = null
+    }
+  }*/
+  function TotalVenda() {
+    let quantMeia = Number(document.getElementById('inputMeia').value)
+    let totalMeia
+    let totalMeiaCampo = document.getElementById('totalMeia')
+    if (quantMeia > 0) {
+      totalMeia = quantMeia*10
+      totalMeiaCampo.value ='R$'  + totalMeia + ',00'
+    } else {
+      totalMeia = 0
+      totalMeiaCampo.value = null
+    }
+    
+    let quantInt = Number(document.getElementById('inputInt').value)
+    let totalInt 
+    let totalIntCampo = document.getElementById('totalInt')
+    if (quantInt > 0) {
+      totalInt = quantInt*20
+      totalIntCampo.value = 'R$'  + totalInt + ',00'
+    } else {
+      totalInt = 0
+      totalIntCampo.value = null
+    }
+
+    let totalVenda = document.getElementById('totalVenda')
+    let TOTAL
+    if (quantMeia + quantInt > 0) {
+      TOTAL = totalMeia + totalInt
+      totalVenda.value = 'R$'+ TOTAL+ ',00'
+    } else {
+      totalVenda.value = null
+    }
+  }
+
+</script>
 @end

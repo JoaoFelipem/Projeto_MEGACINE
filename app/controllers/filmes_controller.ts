@@ -1,0 +1,58 @@
+import Filme from '#models/filme'
+import type { HttpContext } from '@adonisjs/core/http'
+
+export default class FilmesController {
+  /**
+   * Display a list of resource
+   */
+  async index({ view }: HttpContext) {
+    const filmes = await Filme.all()
+
+    return view.render('pages/filmes/index', { filmes })
+  }
+
+  /**
+   * Display form to create a new record
+   */
+  async create({ view }: HttpContext) {
+    return view.render('pages/filmes/create')
+  }
+
+  /**
+   * Handle form submission for the create action
+   */
+  async store({ request, response, session }: HttpContext) {
+    /*const filme = await Filme.create({
+z      titulo: request.input('titulo'),
+z      sinopse: request.input('sinopse'),
+      duracao: request.input('duracao'),
+      classificao_indicativa: request.input('classificao_indicativa'),
+z      direcao: request.input('direcao'),
+      data_estreia: request.input('data_estreia'),
+      data_termino: request.input('data_termino'),
+z      capa: request.input('capa'),
+      genero: request.input('genero')
+    })*/
+
+    return response.redirect().toRoute('filmes.index')
+  }
+  /**
+   * Show individual record
+   */
+  async show({ params }: HttpContext) {}
+
+  /**
+   * Edit individual record
+   */
+  async edit({ params }: HttpContext) {}
+
+  /**
+   * Handle form submission for the edit action
+   */
+  async update({ params, request }: HttpContext) {}
+
+  /**
+   * Delete record
+   */
+  async destroy({ params }: HttpContext) {}
+}
